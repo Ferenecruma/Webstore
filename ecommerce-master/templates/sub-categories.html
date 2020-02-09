@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="category.html#">Home</a></li>
+                <li><a href="category.html#">Category</a></li>
+                <li class='active'>SubCategory</li>
+            </ul>
+        </div><!-- /.breadcrumb-inner -->
+    </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+<div class="body-content outer-top-xs">
+    <div class='container'>
+        <div class='row'>
+
+            <!-- ============================================== SIDEBAR ============================================== -->
+            {% include 'sidebar.html' %}
+            <!-- ============================================== SIDEBAR : END ============================================== -->
+
+            <div class='col-md-9'>
+                <!-- ========================================== SECTION – HERO ========================================= -->
+
+                <div id="category" class="category-carousel hidden-xs">
+                    <div class="item">
+                        <div class="image">
+                            <img src="{% static 'images/banners/cat-banner-1.jpg' %}" class="img-responsive">
+                        </div>
+                        <div class="container-fluid">
+                            <div class="caption vertical-top text-left">
+                                <div class="big-text">
+                                    Big Sale
+                                </div>
+
+                                <div class="excerpt hidden-sm hidden-md">
+                                    Save up to 49% off
+                                </div>
+                                <div class="excerpt-normal hidden-sm hidden-md">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                </div>
+
+                            </div><!-- /.caption -->
+                        </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+
+
+                <!-- ========================================= SECTION – HERO : END ========================================= -->
+                <div class="search-result-container ">
+                    <div id="myTabContent" class="tab-content category-list">
+                        <div class="tab-pane active " id="grid-container">
+                            <div class="category-product">
+                                <div class="row">
+                                    {% for category in object_list %}
+                                    <div class="col-sm-6 col-md-4 wow fadeInUp">
+                                        <div class="products">
+                                            <div class="product">
+                                                <div class="product-image">
+                                                    <div class="image">
+                                                        <a href="detail.html"><img src="{% static 'images/products/p5.jpg' %}"></a>
+                                                    </div><!-- /.image -->
+                                                    <div class="tag new"><span>new</span></div>
+                                                </div><!-- /.product-image -->
+                                                <div class="product-info text-left">
+                                                    <h3 class="name"><a href="detail.html">{{ category.name }}</a>
+                                                    </h3>
+                                                    <div class="rating rateit-small"></div>
+                                                    <div class="description">{{category.desc}}</div>
+                                                    <div class="product-price">
+                                                        <span class="price">{{ category.price }}</span>
+                                                        <span class="price-before-discount">{{ category.price }}</span>
+                                                    </div><!-- /.product-price -->
+                                                </div><!-- /.product-info -->
+                                            </div><!-- /.product -->
+
+                                        </div><!-- /.products -->
+                                    </div><!-- /.item -->
+                                    {% endfor %}
+                                </div><!-- /.row -->
+                            </div><!-- /.category-product -->
+
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                    <div class="clearfix filters-container">
+
+                        <div class="text-right">
+                            <div class="pagination-container">
+                                <ul class="list-inline list-unstyled">
+                                    <li class="prev"><a href="category.html#"><i class="fa fa-angle-left"></i></a></li>
+                                    <li><a href="category.html#">1</a></li>
+                                    <li class="active"><a href="category.html#">2</a></li>
+                                    <li><a href="category.html#">3</a></li>
+                                    <li><a href="category.html#">4</a></li>
+                                    <li class="next"><a href="category.html#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul><!-- /.list-inline -->
+                            </div><!-- /.pagination-container -->                            </div><!-- /.text-right -->
+
+                    </div><!-- /.filters-container -->
+
+                </div><!-- /.search-result-container -->
+
+            </div><!-- /.col -->
+
+        </div><!-- /.row -->
+
+        {% include 'slider-footer.html' %}
+
+    </div>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+{% endblock body %}
