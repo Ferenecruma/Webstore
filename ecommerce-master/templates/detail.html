@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -932,46 +933,11 @@
 
 							<div class="quantity-container info-container">
 								<div class="row">
-									
-									<div class="col-sm-2">
-										<span class="label">Qty :</span>
-									</div>
-									
-									<div class="col-sm-2">
-										<div class="cart-quantity">
-											<div class="quant-input">
-								                <div class="arrows">
-								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-								                </div>
-								                <input type="text" value="1">
-							              </div>
-							            </div>
-									</div>
+																	
 
 									<div class="col-sm-7">
 										
-										<form id="asd" class="form-group" action="sendemail/email" method="post">
-											{% csrf_token %}
-											{{ form }}
-											<input class="btn btn-primary" type="submit" value="Заказать">
-										</form>
 										
-										<script>
-											function close()
-												{
-													document.getElementById("asd").style.display="none";
-													document.getElementById( "button_asd" ).setAttribute( "onClick", "javascript: open();" );
-												}	
-											function open(){
-												document.getElementById("asd").style.display="block";
-											}										
-										</script>
-										
-										<style>
-											.errorlist{color:red;
-            									font-weight:bold;}
-										</style>	
 									</div>
 																	
 								</div><!-- /.row -->
@@ -996,13 +962,36 @@
 								<li><a data-toggle="tab" href="detail.html#tags">TAGS</a></li>
 							</ul><!-- /.nav-tabs #product-tabs -->
 						</div>
-						<div class="col-sm-9">
+						<div class="col-sm-8">
 
 							<div class="tab-content">
 								
 								<div id="description" class="tab-pane in active">
 									<div class="product-tab">
-										<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+										<form id="asd" class="form-group" action="sendemail/email" method="post">
+											{% csrf_token %}
+											{{ form|crispy }}
+											<input class="btn btn-primary" type="submit" value="Заказать">
+										</form>
+
+										
+										<script>
+											function close()
+												{
+													document.getElementById("asd").style.display="none";
+													document.getElementById( "button_asd" ).setAttribute( "onClick", "javascript: open();" );
+												}	
+											function open(){
+												document.getElementById("asd").style.display="block";
+											}										
+										</script>
+										
+										<style>
+											.invalid-feedback{color:rgb(134, 4, 4);
+												font-weight:bold;												
+												position: -webkit-sticky;
+											}
+										</style>	
 									</div>	
 								</div><!-- /.tab-pane -->
 
